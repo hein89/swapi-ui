@@ -1,0 +1,27 @@
+<mat-sidenav-container class="shell-container">
+
+  <mat-sidenav #sidenav class="side-menu"
+    [mode]="isHandset() ? 'over' : 'side'" 
+    [opened]="!isHandset()">
+    
+    <mat-toolbar>Auswahl</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/films" (click)="isHandset() && sidenav.close()">Filme</a>
+      <a mat-list-item routerLink="/people" (click)="isHandset() && sidenav.close()">Charaktere</a>
+      <a mat-list-item routerLink="/planets" (click)="isHandset() && sidenav.close()">Planeten</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{ title() }}</span>
+    </mat-toolbar>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
