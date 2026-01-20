@@ -1,0 +1,24 @@
+/* Der Container muss den gesamten Bildschirm ausfüllen */
+.shell-container {
+  height: 100vh;
+}
+
+/* Abstand für den Hauptinhalt, damit Text nicht am Rand klebt */
+.content {
+  padding: 24px;
+  max-width: 1200px; /* Optional: Begrenzt die Breite auf großen Bildschirmen */
+  margin: 0 auto;    /* Zentriert den Inhalt */
+}
+
+/* Toolbar-Styling für einen sauberen Look */
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.side-menu {
+  width: 250px;
+  border-right: 1px solid rgba(0,0,0,0.12);
+}
