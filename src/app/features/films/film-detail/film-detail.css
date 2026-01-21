@@ -1,0 +1,46 @@
+.detail-wrapper {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-card {
+  max-width: 800px;
+  width: 100%;
+}
+
+.episode-icon {
+  background-color: #ffd700; /* Star Wars Gelb */
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.meta-info {
+  margin: 16px 0;
+  color: #666;
+}
+
+.opening-crawl {
+  background-color: #1a1a1a;
+  color: #ffd700;
+  padding: 24px;
+  border-radius: 4px;
+  margin: 24px 0;
+  font-style: italic;
+  line-height: 1.6;
+  border: 1px solid #444;
+}
+
+.character-section h3 {
+  margin-top: 24px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
