@@ -26,6 +26,10 @@ export const routes: Routes = [
         path: '', 
         loadComponent: () => import('./features/people/people').then(m => m.People) 
       },
+      { 
+        path: ':id', 
+        loadComponent: () => import('./features/people/person-detail/person-detail').then(m => m.PersonDetail) 
+      },
     ]
   },
 

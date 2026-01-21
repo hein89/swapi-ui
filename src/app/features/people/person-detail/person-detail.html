@@ -1,0 +1,27 @@
+@if (personResource.value(); as person) {
+      <mat-card style="max-width: 500px; margin: 20px auto;">
+        <mat-card-header>
+          <mat-card-title>{{ person.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <span matListItemTitle>Größe</span>
+              <span matListItemLine>{{ person.height }} cm</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Gewicht</span>
+              <span matListItemLine>{{ person.mass }} kg</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Augenfarbe</span>
+              <span matListItemLine>{{ person.eye_color }}</span>
+            </mat-list-item>
+          </mat-list>
+          
+          <p style="margin-top: 20px;">
+            <strong>Heimatplanet:</strong> {{ person.homeworld }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    }

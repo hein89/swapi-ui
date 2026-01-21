@@ -1,1 +1,21 @@
-<p>people works!</p>
+<h2>Star Wars Charaktere</h2>
+
+    @if (store.peopleResource.isLoading()) {
+      <mat-spinner></mat-spinner>
+    } @else {
+      <div class="people-grid">
+        @for (person of store.peopleResource.value(); track person.url) {
+          <mat-card class="person-card">
+            <mat-card-header>
+              <mat-card-title>{{ person.name }}</mat-card-title>
+              <mat-card-subtitle>Geburtsjahr: {{ person.birth_year }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+              <button mat-flat-button color="accent" [routerLink]="['/people', extractId(person.url)]">
+                PROFIL ANSEHEN
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        }
+      </div>
+    }
