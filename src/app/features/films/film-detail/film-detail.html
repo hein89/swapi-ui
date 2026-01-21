@@ -1,0 +1,43 @@
+@if (filmResource.isLoading()) {
+  <div class="loader-container">
+    <mat-spinner></mat-spinner>
+  </div>
+} @else if (filmResource.value(); as film) {
+  <div class="detail-wrapper">
+    
+    <mat-card class="main-card">
+      <mat-card-header>
+        <div mat-card-avatar class="episode-icon">{{ film.episode_id }}</div>
+        <mat-card-title>{{ film.title }}</mat-card-title>
+        <mat-card-subtitle>Regie: {{ film.director }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="meta-info">
+          <p><strong>Produzent:</strong> {{ film.producer }}</p>
+          <p><strong>Veröffentlichung:</strong> {{ film.release_date | date:'longDate' }}</p>
+        </div>
+
+        <div class="opening-crawl">
+          <h3>Der Vorspann</h3>
+          <p>{{ film.opening_crawl }}</p>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="character-section">
+          <h3>Charaktere in diesem Film</h3>
+          <mat-nav-list>
+            @for (charUrl of film.characters; track charUrl) {
+              <a mat-list-item [routerLink]="['/people', extractId(charUrl)]">
+                <mat-icon matListItemIcon>person</mat-icon>
+                <span matListItemTitle>Charakter ID: {{ extractId(charUrl) }}</span>
+              </a>
+            }
+          </mat-nav-list>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+}
