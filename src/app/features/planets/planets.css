@@ -1,0 +1,13 @@
+.planets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
