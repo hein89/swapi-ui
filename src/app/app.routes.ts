@@ -33,6 +33,21 @@ export const routes: Routes = [
     ]
   },
 
+  // Planeten (Root-Ressource 3)
+  {
+    path: 'planets',
+    children: [
+      { 
+        path: '', 
+        loadComponent: () => import('./features/planets/planets').then(m => m.Planets) 
+      },
+      { 
+        path: ':id', 
+        loadComponent: () => import('./features/planets/planet-detail/planet-detail').then(m => m.PlanetDetail) 
+      },
+    ]
+  },
+
 
   // Standard-Umleitung
   { path: '', redirectTo: 'films', pathMatch: 'full' },
