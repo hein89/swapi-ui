@@ -1,7 +1,8 @@
-import { Component, input, resource } from '@angular/core';
+import { Component, inject, input, resource } from '@angular/core';
 import { Planet } from '../planet';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { PlanetsStore } from '../planets-store';
 
 @Component({
   selector: 'app-planet-detail',
@@ -11,6 +12,7 @@ import { MatListModule } from '@angular/material/list';
 })
 export class PlanetDetail {
 
+  /*
   id = input.required<string>();
 
   planetResource = resource({
@@ -20,5 +22,14 @@ export class PlanetDetail {
         .then(res => res.json() as Promise<Planet>);
     }
   });
+  */
+
+  private planetsStore = inject(PlanetsStore);
+
+  // ID aus der Route
+  id = input.required<string>();
+
+  // Daten vom Store beziehen
+  planetResource = this.planetsStore.getPlanetResource(this.id);
 
 }

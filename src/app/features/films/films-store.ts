@@ -17,4 +17,16 @@ export class FilmsStore {
     }
   });
 
+  // 2. Methode für einen einzelnen Film
+  // Wir nehmen ein Signal (oder eine Funktion, die einen String liefert) entgegen
+  getFilmResource(idSignal: () => string) {
+    return resource({
+      loader: () => {
+        const currentId = idSignal(); // Hier wird die Abhängigkeit registriert
+        return fetch(`https://swapi.dev/api/films/${currentId}/`)
+          .then(res => res.json() as Promise<Film>);
+      }
+    });
+  }
+
 }

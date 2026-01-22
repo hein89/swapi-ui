@@ -1,4 +1,4 @@
-import { Component, input, resource } from '@angular/core';
+import { Component, inject, input, resource } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDivider, MatListModule } from '@angular/material/list';
@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { Film } from '../film';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DatePipe } from '@angular/common';
+import { FilmsStore } from '../films-store';
 
 @Component({
   selector: 'app-film-detail',
@@ -15,19 +16,14 @@ import { DatePipe } from '@angular/common';
 })
 export class FilmDetail {
 
+  private filmsStore = inject(FilmsStore);
+
   // Angular 20 "Component Input" liest automatisch :id aus der Route
   id = input.required<string>();
 
-  filmResource = resource({
-    loader: () => {
-      // Wir greifen direkt auf das Signal id() zu. 
-      // Angular registriert dies automatisch als Abhängigkeit!
-      const currentId = this.id(); 
-      
-      return fetch(`https://swapi.dev/api/films/${currentId}/`)
-        .then(res => res.json() as Promise<Film>);
-    }
-  });
+  // Wir initialisieren die Resource über den Store
+  // Da 'id' ein Signal ist, können wir es einfach übergeben
+  filmResource = this.filmsStore.getFilmResource(this.id);
 
   extractId(url: string): string {
     return url.split('/').filter(part => !!part).pop() || '';
