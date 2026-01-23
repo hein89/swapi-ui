@@ -8,7 +8,7 @@ export class FilmsStore {
 
   // Fetch ist ausreichend, um Daten von der SWAPI zu laden, ausreichend für eine Lese-App
 
-  // Die Resource lädt die Daten sofort, wenn sie irgendwo injiziert wird
+  // 1. Liste aller Filme
   filmsResource = resource({
     loader: async (): Promise<Film[]> => {
       const res = await fetch('https://swapi.dev/api/films/');
@@ -18,13 +18,12 @@ export class FilmsStore {
   });
 
   // 2. Methode für einen einzelnen Film
-  // Wir nehmen ein Signal (oder eine Funktion, die einen String liefert) entgegen
   getFilmResource(idSignal: () => string) {
     return resource({
-      loader: () => {
+      loader: async () => {
         const currentId = idSignal(); // Hier wird die Abhängigkeit registriert
-        return fetch(`https://swapi.dev/api/films/${currentId}/`)
-          .then(res => res.json() as Promise<Film>);
+        const res = await fetch(`https://swapi.dev/api/films/${currentId}/`);
+        return await (res.json() as Promise<Film>);
       }
     });
   }

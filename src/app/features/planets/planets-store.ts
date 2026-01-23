@@ -7,17 +7,7 @@ import { SwapiResponse } from '../films/film';
 })
 export class PlanetsStore {
  
-  // 1. Liste aller Planeten (aber nur die ersten 10)
-  /*
-  planetsResource = resource({
-    loader: () => 
-      fetch('https://swapi.dev/api/planets/')
-        .then(res => res.json())
-        .then(data => data.results as Planet[])
-  });
-  */
-
-  // Lädt ALLE Planeten durch rekursives Abrufen der "next"-Links
+  // 1. Lädt ALLE Planeten durch rekursives Abrufen der "next"-Links
   planetsResource = resource({
     loader: async (): Promise<Planet[]> => {
       let allPlanets: Planet[] = [];

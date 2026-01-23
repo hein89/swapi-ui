@@ -7,7 +7,7 @@ export interface Person {
     eye_color: string;
     birth_year: string;
     gender: string;
-    homeworld: string; // URL zum Planeten (Root-Ressource 3)
-    films: string[];    // URLs zu Filmen
-    url: string;        // Die URL für die ID-Extraktion
+    homeworld: string;
+    films: string[];    
+    url: string;        
 }
