@@ -8,7 +8,7 @@ export interface Planet {
     terrain: string;
     surface_water: string;
     population: string;
-    residents: string[]; // URLs zu den Bewohnern (People)
-    films: string[];     // URLs zu den Filmen
+    residents: string[]; 
+    films: string[];     
     url: string;
 }

@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { People } from './people';
+import { provideZonelessChangeDetection } from '@angular/core';
+import { PeopleStore } from './people-store';
+import { provideRouter } from '@angular/router';
 
 describe('People', () => {
   let component: People;
@@ -8,7 +11,8 @@ describe('People', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [People]
+      imports: [People],
+      providers: [provideZonelessChangeDetection(), provideRouter([]), PeopleStore]
     })
     .compileComponents();
 
@@ -21,3 +25,7 @@ describe('People', () => {
     expect(component).toBeTruthy();
   });
 });
+function providerRouter(arg0: never[]): any {
+  throw new Error('Function not implemented.');
+}
+

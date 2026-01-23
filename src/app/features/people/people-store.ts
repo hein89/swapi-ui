@@ -7,16 +7,6 @@ import { SwapiResponse } from '../films/film';
 })
 export class PeopleStore {
 
-// 1. Liste aller Personen aber nur die ersten 10
-/*
-  peopleResource = resource({
-    loader: () => 
-      fetch('https://swapi.dev/api/people/')
-        .then(res => res.json())
-        .then(data => data.results as Person[])
-  });
-*/
-
 // Lädt ALLE Personen durch rekursives Abrufen der "next"-Links
 peopleResource = resource({
     loader: async () => {

@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { Films } from './features/films/films';
-import { FilmDetail } from './features/films/film-detail/film-detail';
 
 export const routes: Routes = [
   // Filme (Root-Ressource 1)

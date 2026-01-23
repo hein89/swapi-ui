@@ -6,8 +6,8 @@ export interface Film {
   producer: string;
   release_date: string;
   characters: string[]; // URLs zu den Charakteren
-  planets: string[];    // URLs zu den Planeten
-  url: string;          // Die URL dieses Films (wichtig für die ID)
+  planets: string[];    
+  url: string;          
 }
 
 // Schnittstelle für die Antwort der SWAPI-Filme-Endpunkts
